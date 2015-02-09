@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <style>
+            textarea { width: 500px; height: 500px; }
+        </style>
+    </head>
+    <body>
+        <h2>Paste:</h2>
+        <textarea id='text'></textarea>
+<br />
+        <input type='submit' id='submit' value='Get URL'>
+        <script>
+            var content = "This is where I will store the content";
+            var text = document.getElementById('text');
+            text.value = content;
+
+            function uri() {
+                //var html = document.documentElement.innerHTML;
+                // Replace current content with text.value
+                return "data:text/html;base64," + btoa(text.value);
+           }
+
+            document.getElementById('text').onkeydown = function() {
+                if(uri().length > 7926){ alert('Text too long for TinyUrl'); }
+            }
+            document.getElementById('submit').onclick = function() {
+                var tinyUrl = "http://tinyurl.com/create.php?url=" + uri();
+                window.open(tinyUrl, '_blank');
+            }
+        </script>
+    </body>
+</html>
