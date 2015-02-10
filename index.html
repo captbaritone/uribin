@@ -5,27 +5,28 @@
         </style>
     </head>
     <body>
-        <h2>Paste:</h2>
-        <textarea id='text'></textarea>
+        <h1>UriBin</h1>
+        <p>A self-replicating paste bin that lives in URL shorteners</p>
+        <textarea id='text'>This is where I will store the content</textarea>
 <br />
-        <input type='submit' id='submit' value='Get URL'>
+        <input type='button' value='Save to TinyuRL' onclick="window.open('http://tinyurl.com/create.php?url=' + uri(), '_blank')">
+        <input type='button' value='Open' onclick="window.open(uri(), '_blank')">
+        <input type='button' value='Clear' onclick="text.value=''">
+        <p>By <a href='https://twitter.com/captbaritone'>@captbaritone</a></p>
         <script>
-            var content = "This is where I will store the content";
             var text = document.getElementById('text');
-            text.value = content;
-
             function uri() {
-                //var html = document.documentElement.innerHTML;
-                // Replace current content with text.value
-                return "data:text/html;base64," + btoa(text.value);
-           }
-
-            document.getElementById('text').onkeydown = function() {
-                if(uri().length > 7926){ alert('Text too long for TinyUrl'); }
+                var html = document.documentElement.innerHTML
+                html = html.replace(/(<textarea.*>)(.*)(<\/textarea>)/,
+                    function(match, p1, p2, p3) {
+                        var cleaner = document.createElement('div');
+                        cleaner.textContent = text.value;
+                        return p1 + cleaner.innerHTML + p3;
+                    });
+                return "data:text/html;base64," + btoa(html);
             }
-            document.getElementById('submit').onclick = function() {
-                var tinyUrl = "http://tinyurl.com/create.php?url=" + uri();
-                window.open(tinyUrl, '_blank');
+            text.onkeydown = function() {
+                if(uri().length > 7926){ alert('Text too long for TinyUrl'); }
             }
         </script>
     </body>
