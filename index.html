@@ -1,31 +1,49 @@
 <html>
     <head>
         <style>
-            textarea { width: 500px; height: 500px; }
+            h1, .tag { text-align: center; }
+            body { padding: 2em 5%; font-family: sans-serif; }
+            textarea { width: 100%; min-height: 300px; margin: 0 0 2em 0; }
+            textarea:disabled { background-color: #eee; padding: 10px; font-size: 13px; color: #000; border: 1px solid #ddd; }
+            .e { display: none; }
+            .n .e { display: inline; }
+            .n .v { display: none; }
         </style>
     </head>
     <body>
         <h1>UriBin</h1>
-        <p>A self-replicating paste bin that lives in URL shorteners</p>
-        <textarea id='text'>This is where I will store the content</textarea>
+        <p class='tag'>A self-replicating paste bin that lives in URL shorteners</p>
+        <textarea id='t' disabled>This is where I will store the content</textarea>
 <br />
-        <input type='button' value='Save to TinyuRL' onclick="window.open('http://tinyurl.com/create.php?url=' + uri(), '_blank')">
-        <input type='button' value='Open' onclick="window.open(uri(), '_blank')">
-        <input type='button' value='Clear' onclick="text.value=''">
+        <input type='button' class='e' value='Save to TinyuRL' onclick="window.open('http://tinyurl.com/create.php?url=' + saveUri(), '_blank')">
+        <input type='button' class='e' value='Paste' onclick="window.open(saveUri(), '_blank')">
+        <input type='button' class='v' value='New Paste' onclick="t.value=''; newPaste(); t.focus();">
         <p>By <a href='https://twitter.com/captbaritone'>@captbaritone</a></p>
         <script>
-            var text = document.getElementById('text');
+            t = document.getElementById('t');
+            c = document.querySelector('body').classList;
             function uri() {
-                var html = document.documentElement.innerHTML
-                html = html.replace(/(<textarea.*>)(.*)(<\/textarea>)/,
-                    function(match, p1, p2, p3) {
-                        var cleaner = document.createElement('div');
-                        cleaner.textContent = text.value;
-                        return p1 + cleaner.innerHTML + p3;
+                h = document.documentElement.innerHTML
+                h = h.replace(/(<textarea.*>)(.*)(<\/textarea>)/,
+                    function(z, a, b, c) {
+                        d = document.createElement('div');
+                        d.textContent = t.value;
+                        return a + d.innerHTML + c;
                     });
                 return "data:text/html;base64," + btoa(html);
             }
-            text.onkeydown = function() {
+            function newPaste() {
+                t.disabled = false;
+                c.add('n');
+            }
+            function saveUri() {
+                t.disabled = true;
+                c.remove('n');
+                u = uri();
+                newPaste();
+                return u;
+            }
+            t.onkeydown = function() {
                 if(uri().length > 7926){ alert('Text too long for TinyUrl'); }
             }
         </script>
