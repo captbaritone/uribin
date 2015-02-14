@@ -15,4 +15,4 @@ UriBin is just such an HTML file. What makes it special though, is that it
 facilitates the posting of a modified version of itself containing whatever
 text you enter.
 
-Try it out! http://tinyurl.com/l6ggm23
+Try it out! http://tinyurl.com/ntxtnom
