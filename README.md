@@ -9,10 +9,7 @@ encoded within it.
 
 Some URL shorteners will let you "shorten" URIs. This means you can,
 essentially, use the shortener as a free anonymous host for small files of any
-type.
-
-HTML files can contain JavaScript which can facilitate both creating, and
-shortening/posting URIs.
+type, including HTML with inline JavaScript.
 
 UriBin is just such an HTML file. What makes it special though, is that it
 facilitates the posting of a modified version of itself containing whatever
