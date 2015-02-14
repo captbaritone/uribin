@@ -33,23 +33,25 @@ GIVE IT A TRY!
 
 Click "New Paste" below to create and share your
 own paste.</textarea>
-    <input type='button' class='e' value='Save to TinyuRL' onclick="window.open('http://tinyurl.com/create.php?url='+uri(),'_blank')">
-    <input type='button' class='e' value='Paste' onclick="window.open(uri(),'_blank')">
+    <input type='button' class='e' value='Save to TinyuRL' onclick="l('http://tinyurl.com/create.php?url=')">
+    <input type='button' class='e' value='Paste' onclick="l('')">
     <input type='button' class='v' value='New Paste' onclick="t.value='';t.disabled=false;c.add('n');t.focus();">
     <p>by <a href='https://twitter.com/captbaritone'>@captbaritone</a> - <a href='https://github.com/captbaritone/uribin'>GitHub</a></p>
     <script>
         t = document.getElementById('t');
         t.style.height = t.scrollHeight + 10;
         c = document.querySelector('body').classList;
-        function uri() {
+        function l(p) {
             var x = new XMLHttpRequest();
             x.open('GET', document.URL, false);
+            x.onload = function() {
+                h = x.responseText.replace(/(<textarea.*>)([^]*)(<\/textarea>)/, function(z, a, b, c) {
+                    t.textContent = t.value;
+                    return a + t.innerHTML + c;
+                });
+                window.open(p + "data:text/html;base64," + btoa(h),'_blank');
+            }
             x.send(null);
-            h = x.responseText.replace(/(<textarea.*>)([^]*)(<\/textarea>)/, function(z, a, b, c) {
-                t.textContent = t.value;
-                return a + t.innerHTML + c;
-            });
-            return "data:text/html;base64," + btoa(h);
         }
     </script>
 </body>
