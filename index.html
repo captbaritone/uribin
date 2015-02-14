@@ -1,7 +1,7 @@
 <head>
     <title>UriBin</title>
     <style>
-        h1, #tag { text-align: center; }
+        h1, p { text-align: center; }
         body { padding: 2em 5%; font-family: sans-serif; }
         textarea { width: 100%; font-size: 13px; color: #000; margin: 0 0 20px 0; border: 1px solid #ddd; padding: 10px; min-height: 300px; }
         textarea:disabled { background: #eee; }
@@ -12,12 +12,31 @@
 </head>
 <body>
     <h1>UriBin</h1>
-    <p id='tag'>A self-replicating paste bin that lives in URL shorteners</p>
-    <textarea disabled  id='t'>Test</textarea>
+    <p>A self-replicating paste bin that lives in URL shorteners</p>
+    <textarea disabled  id='t'>             ==[ What is UriBin? ]==
+
+A URI is like a URL except, rather than pointing
+to a file, it contains a file encoded within it.
+
+Some URL shorteners will let you "shorten" URIs.
+This means you can, essentially, use the shortener
+as a free anonymous host for small files of any
+type, including HTML with inline JavaScript.
+
+UriBin is just such an HTML file. What makes it
+special though, is that it facilitates the posting
+of a modified version of itself containing whatever
+text you enter.
+
+
+GIVE IT A TRY!
+
+Click "New Paste" below to create and share your
+own paste.</textarea>
     <input type='button' class='e' value='Save to TinyuRL' onclick="window.open('http://tinyurl.com/create.php?url='+uri(),'_blank')">
     <input type='button' class='e' value='Paste' onclick="window.open(uri(),'_blank')">
     <input type='button' class='v' value='New Paste' onclick="t.value='';t.disabled=false;c.add('n');t.focus();">
-    <p>By <a href='https://twitter.com/captbaritone'>@captbaritone</a></p>
+    <p>by <a href='https://twitter.com/captbaritone'>@captbaritone</a> - <a href='https://github.com/captbaritone/uribin'>GitHub</a></p>
     <script>
         t = document.getElementById('t');
         t.style.height = t.scrollHeight + 10;
