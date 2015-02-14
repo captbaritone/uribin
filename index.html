@@ -49,7 +49,7 @@ own paste.</textarea>
                 t.textContent = t.value;
                 return a + t.innerHTML + c;
             });
-            return "data:text/html," + encodeURIComponent(h);
+            return "data:text/html;base64," + btoa(h);
         }
     </script>
 </body>
