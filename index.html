@@ -45,7 +45,7 @@ own paste.</textarea>
             var x = new XMLHttpRequest();
             x.open('GET', document.URL, false);
             x.send(null);
-            h = x.responseText.replace(/(<textarea.*>)(.*)(<\/textarea>)/, function(z, a, b, c) {
+            h = x.responseText.replace(/(<textarea.*>)([^]*)(<\/textarea>)/, function(z, a, b, c) {
                 t.textContent = t.value;
                 return a + t.innerHTML + c;
             });
