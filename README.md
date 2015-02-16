@@ -4,15 +4,20 @@ A self-replicating paste bin that lives in URL shorteners
 
 ## What?
 
-A URI is like a URL except, rather than pointing to a file, it contains a file
-encoded within it.
+UriBin combines the following three realizations:
 
-Some URL shorteners will let you "shorten" URIs. This means you can,
-essentially, use the shortener as a free anonymous host for small files of any
-type, including HTML with inline JavaScript.
+1. Using a [data
+   URI](https://developer.mozilla.org/en-US/docs/Web/HTTP/data_URIs) you can
+   write an HTML/JavaScript app that is completely contained within a link.
 
-UriBin is just such an HTML file. What makes it special though, is that it
-facilitates the posting of a modified version of itself containing whatever
-text you enter.
+2. You can get TinyUrl to host this app by asking it to "shorten" your data
+   URI.
 
-Try it out! http://tinyurl.com/ntxtnom
+3. A data URI app could modify its internal state, express that new state as
+   a new URI, and ask TinyUrl to shorten that URI.
+
+UriBin is a paste bin app which is encoded as a data URI. You can modify its
+content and then save that new content (and the surrounding app) to a new
+TinyUrl link.
+
+[Try it out!](http://tinyurl.com/ntxtnom)
