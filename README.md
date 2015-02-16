@@ -6,7 +6,7 @@ UriBin is a paste bin app which is encoded as a data URI. You can modify its
 content and then save that new content (and the surrounding app) to a new
 TinyUrl link.
 
-**Try it out!: http://tinyurl.com/q27kd8a**
+**Try it out!: http://tinyurl.com/porqfo9**
 
 ## How does it work?
 
@@ -36,7 +36,7 @@ You should then find the new URI in `build/index.url`
 ## Limitations
 
 * TinyUrl seems to cap URLs at around 8,000 characters. Our app already eats up
-  1,765 of those
+  ~2,000 of those
 * TinyUrl is the only URL shortener I could find that will shorten anonymous
   data URIs
 
