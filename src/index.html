@@ -1,16 +1,9 @@
 <!-- Note: This code must be converted to a data URI before it will work -->
-<!-- You can do that here: http://dataurl.net/#dataurlmaker-->
+<!-- You can do that via the included grunt script -->
+<!-- Omit <html> tag. Browsers will infer it -->
 <head>
     <title>UriBin</title>
-    <style>
-        h1, p { text-align: center; }
-        body { padding: 2em 5%; font-family: sans-serif; }
-        textarea { font-family: monospace;width: 100%; font-size: 13px; color: #000; margin: 0 0 20px 0; border: 1px solid #ddd; padding: 10px; min-height: 300px; }
-        textarea:disabled { background: #eee; }
-        .e { display: none; }
-        .n .e { display: inline; }
-        .n .v { display: none; }
-    </style>
+    <link rel="stylesheet" href="uribin.css?inline">
 </head>
 <body>
     <h1>UriBin</h1>
@@ -18,19 +11,12 @@
     <textarea disabled id='t'>UriBin is a paste bin app which is encoded as a data URI. You can modify its content and then save that new content (and the surrounding app) to a new TinyUrl link.
 
 Try for yourself by clicking NEW PASTE below.</textarea>
-    <input type='button' class='e' value='Save to TinyuRL' onclick="l('http://tinyurl.com/create.php?url=')">
-    <input type='button' class='e' value='Paste' onclick="l('')">
+    <input type='button' class='e' value='Save to TinyURL' onclick="l('http://tinyurl.com/create.php?url=')">
+    <input type='button' class='e' value='Save to Data URI' onclick="l('')">
+    <!-- When creating a new paste: empty the textarea, change button visiblity, and focus the textarea -->
     <input type='button' class='v' value='New Paste' onclick="t.value='';t.disabled=false;c.add('n');t.focus();">
+    <!-- Credits -->
     <p>by <a href='https://twitter.com/captbaritone'>@captbaritone</a> - <a href='https://github.com/captbaritone/uribin'>GitHub</a></p>
-    <script>
-        t = document.getElementById('t');
-        t.style.height = t.scrollHeight + 10;
-        c = document.querySelector('body').classList;
-        function l(p) {
-            window.open(p+document.URL.replace(/(%3Ctextarea.*%3E)([^]*)(%3C%2Ftextarea%3E)/, function(z, a, b, c) {
-                t.textContent = t.value;
-                return a + encodeURIComponent(t.innerHTML) + c;
-            }),'_blank');
-        }
-    </script>
+    <script src="uribin.js?inline"></script>
 </body>
+<!-- Omit </html> tag. Browsers will infer it -->

@@ -1,0 +1,7 @@
+h1, p { text-align: center; }
+body { padding: 2em 5%; font-family: sans-serif; }
+textarea { font-family: monospace;width: 100%; font-size: 13px; color: #000; margin: 0 0 20px 0; border: 1px solid #ddd; padding: 10px; min-height: 300px; }
+textarea:disabled { background: #eee; }
+.e { display: none; }
+.n .e { display: inline; }
+.n .v { display: none; }
