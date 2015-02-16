@@ -13,7 +13,7 @@
 <body>
     <h1>UriBin</h1>
     <p>A self-replicating paste bin that lives in URL shorteners</p>
-    <textarea disabled  id='t'>             ==[ What is UriBin? ]==
+    <textarea disabled id='t'>             ==[ What is UriBin? ]==
 
 A URI is like a URL except, rather than pointing
 to a file, it contains a file encoded within it.
@@ -42,16 +42,10 @@ own paste.</textarea>
         t.style.height = t.scrollHeight + 10;
         c = document.querySelector('body').classList;
         function l(p) {
-            var x = new XMLHttpRequest();
-            x.open('GET', document.URL, false);
-            x.onload = function() {
-                h = x.responseText.replace(/(<textarea.*>)([^]*)(<\/textarea>)/, function(z, a, b, c) {
-                    t.textContent = t.value;
-                    return a + t.innerHTML + c;
-                });
-                window.open(p + "data:text/html;base64," + btoa(h),'_blank');
-            }
-            x.send(null);
+            window.open(p+document.URL.replace(/(%3Ctextarea.*%3E)([^]*)(%3C%2Ftextarea%3E)/, function(z, a, b, c) {
+                t.textContent = t.value;
+                return a + t.innerHTML + c;
+            }),'_blank');
         }
     </script>
 </body>
