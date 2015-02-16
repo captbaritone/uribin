@@ -46,7 +46,7 @@ own paste.</textarea>
         function l(p) {
             window.open(p+document.URL.replace(/(%3Ctextarea.*%3E)([^]*)(%3C%2Ftextarea%3E)/, function(z, a, b, c) {
                 t.textContent = t.value;
-                return a + t.innerHTML + c;
+                return a + encodeURIComponent(t.innerHTML) + c;
             }),'_blank');
         }
     </script>
