@@ -6,6 +6,8 @@ UriBin is a paste bin app which is encoded as a data URI. You can modify its
 content and then save that new content (and the surrounding app) to a new
 TinyUrl link.
 
+[Try it out!](http://tinyurl.com/lu2z465)
+
 ## What?
 
 UriBin combines the following three realizations:
@@ -19,8 +21,6 @@ UriBin combines the following three realizations:
 
 3. A data URI app could modify its internal state, express that new state as
    a new URI, and ask TinyUrl to shorten that URI.
-
-[Try it out!](http://tinyurl.com/lu2z465)
 
 ## Limitations
 
