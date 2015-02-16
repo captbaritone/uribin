@@ -6,7 +6,7 @@ UriBin is a paste bin app which is encoded as a data URI. You can modify its
 content and then save that new content (and the surrounding app) to a new
 TinyUrl link.
 
-**[Try it out!](http://tinyurl.com/n5hsjtt)**
+**[Try it out!](http://tinyurl.com/q6epnk4)**
 
 ## What?
 
