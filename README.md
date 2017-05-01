@@ -1,5 +1,7 @@
 # UriBin
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/captbaritone/uribin.svg)](https://greenkeeper.io/)
+
 A self-replicating paste bin that lives in URL shorteners
 
 UriBin is a paste bin app which is encoded as a data URI. You can modify its
